@@ -9,3 +9,11 @@ export const getAll = async () => {
     });
     //Default await used 
 };
+
+export const save = async (hero: Heroes) => {
+    return getRepository(Heroes).save(hero);
+};
+
+export const delHero = async (id: number) => {
+    return getRepository(Heroes).delete(id);
+};

@@ -8,6 +8,8 @@ const router = new Router({
 });
 
 router.get('/', ctrl.getAll);
+router.post('/', ctrl.save);
+router.delete('/', ctrl.delHero);
 
 const routes = router.routes();
 export default compose([routes]);
