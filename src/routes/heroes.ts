@@ -10,6 +10,7 @@ const router = new Router({
 router.get('/', ctrl.getAll);
 router.post('/', ctrl.save);
 router.delete('/', ctrl.delHero);
+router.post('/update', ctrl.updateHero);
 
 const routes = router.routes();
 export default compose([routes]);
