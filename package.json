@@ -35,6 +35,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "bcryptjs": "^2.4.3",
     "boom": "7.3.0",
     "bunyan": "^1.8.12",
     "convict": "5.0.0",
