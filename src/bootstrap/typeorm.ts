@@ -6,6 +6,8 @@ import {
   getConnection,
 } from 'typeorm';
 import config from '../../config';
+import { Heroes } from '../entities/heroes';
+import { Users } from '../entities/users';
 import { getLoggerInstance } from '../utils/logger';
 const logger = getLoggerInstance();
 
@@ -43,6 +45,7 @@ export const bootstrapDatabase = async (): Promise<any> => {
     logger: new DatabaseLogger(),
     synchronize: false,
     maxQueryExecutionTime: config.database.maxQueryExecutionTime,
+    entities: [Heroes, Users]
   });
   return createConnection(connectionOptions);
 };

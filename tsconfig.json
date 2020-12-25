@@ -16,8 +16,8 @@
       "noImplicitAny": true,
       "suppressImplicitAnyIndexErrors": true,
       "typeRoots": ["node_modules/@types", "./typings"],
-      "outDir": "dist",
-      "rootDirs": ["src"]
+      "outDir": "./build",
+      "rootDirs": ["."]
     },
     "include": ["src/**/*"]
   }

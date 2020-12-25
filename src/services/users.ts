@@ -21,7 +21,7 @@ export const addUser = async (user: ICreateUserRequest) => {
 
     const newUser = new Users();
     newUser.name = user.name;
-    newUser.passwordHash = hashPassword;
+    newUser.password = hashPassword;
     newUser.email = user.email;
     return repo.save(newUser);
 };

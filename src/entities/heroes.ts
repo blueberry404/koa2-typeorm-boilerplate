@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable } from "typeorm";
+import { Users } from "./users";
 
 @Entity('heroes')
 export class Heroes {
@@ -14,4 +15,7 @@ export class Heroes {
         type: 'boolean'
     })
     public isActive: boolean;
+
+    @ManyToOne(() => Users, user => user.heroes)
+    user: Users
 }

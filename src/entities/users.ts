@@ -1,4 +1,5 @@
-import { PrimaryGeneratedColumn, Entity, Column } from "typeorm";
+import { PrimaryGeneratedColumn, Entity, Column, OneToMany, JoinTable } from "typeorm";
+import { Heroes } from "./heroes";
 
 @Entity('users')
 export class Users {
@@ -18,5 +19,9 @@ export class Users {
     @Column({
         type: 'character varying'
     })
-    public passwordHash: string;
+    public password: string;
+
+    @OneToMany(() => Heroes, hero => hero.user)
+    @JoinTable()
+    heroes: [Heroes]
 }

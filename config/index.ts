@@ -19,6 +19,8 @@ export interface IConfig {
     cacheDuration: number;
     maxQueryExecutionTime: number;
     readReplicationSlaves: string;
+    synchronize: boolean;
+    logging: boolean;
   };
 }
 
@@ -94,7 +96,17 @@ const config = convict<IConfig>({
       env: 'TYPEORM_READ_REPLICATION_SLAVES', // comma separated hostnames of read relication slaves
       default: '',
     },
-  },
+    synchronize: {
+      format: Boolean,
+      env: 'TYPEORM_SYNCHRONIZE',
+      default: true
+    },
+    logging: {
+      format: Boolean,
+      env: 'TYPEORM_LOGGING',
+      default: false
+    }
+  }
 });
 
 config.validate({ allowed: 'strict' });

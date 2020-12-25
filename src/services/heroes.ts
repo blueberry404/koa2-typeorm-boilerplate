@@ -2,7 +2,6 @@ import * as joi from 'joi';
 import * as repo from '../repositories/heroes';
 import { IHeroRequest } from '../interfaces/hero';
 import { Heroes } from '../entities/heroes';
-import { join } from 'path';
 import { IHeroUpdateRequest } from '../interfaces/heroUpdate';
 
 export const getAll = async () => {

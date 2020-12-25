@@ -5,10 +5,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-COPY . .
+ADD . /app
 
-EXPOSE 4001
-EXPOSE 5858
+RUN npm run tsc
 
-ENTRYPOINT ["./entrypoint.sh"]
-CMD ["node", "./bin/server"]
+EXPOSE 3000
+EXPOSE 6379
+
+CMD [ "npm", "run", "docker-dev" ]
