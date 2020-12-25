@@ -16,8 +16,8 @@ export const addUser = async (user: ICreateUserRequest) => {
         password: joi.string().required(),
     });
 
-    let hashPassword = bcrypt.hashSync(user.password, 5);
-    console.log(`converted pass: ${hashPassword}`);
+    let saltNum = process.env.SALT_ROUNDS || ''
+    let hashPassword = bcrypt.hashSync(user.password, +saltNum);
 
     const newUser = new Users();
     newUser.name = user.name;

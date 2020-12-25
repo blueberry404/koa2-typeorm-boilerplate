@@ -12,7 +12,8 @@ export class Users {
     public name: string;
 
     @Column({
-        type: 'character varying'
+        type: 'character varying',
+        unique: true
     })
     public email: string;
 

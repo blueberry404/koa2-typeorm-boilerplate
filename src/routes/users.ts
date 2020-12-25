@@ -4,7 +4,7 @@ import * as ctrl from '../controllers/users';
 import * as compose from 'koa-compose';
 
 const router = new Router({
-    prefix: `${config.api.baseURL}/heroes`,
+    prefix: `${config.api.baseURL}/users`,
 });
 
 router.get('/', ctrl.getAll);
