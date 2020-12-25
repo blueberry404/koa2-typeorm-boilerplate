@@ -7,7 +7,7 @@ export const getAll = async () => {
 };
 
 export const getUser = async (email: string) => {
-    return getRepository(Users).find({
+    return getRepository(Users).findOne({
         where: {
             email
         }

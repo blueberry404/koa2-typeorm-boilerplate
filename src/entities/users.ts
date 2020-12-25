@@ -26,3 +26,15 @@ export class Users {
     @JoinTable()
     heroes: [Heroes]
 }
+
+export class NoPassUser {
+    id: number;
+    name: string;
+    email: string;
+
+    constructor(user: Users) {
+        this.id = user.id;
+        this.name = user.name;
+        this.email = user.email;
+    }
+}

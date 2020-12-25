@@ -5,23 +5,23 @@ import { IHeroUpdateRequest } from '../interfaces/heroUpdate';
 
 export const getAll = async (ctx: Context, next: () => void) => {
     ctx.state.data = await service.getAll();
-    await next();
+    next();
 };
 
 export const save = async (ctx: Context, next: () => void) => {
     const payload: IHeroRequest = ctx.request.body;
     ctx.state.data = await service.addHero(payload);
-    await next();
+    next();
 };
 
 export const delHero = async (ctx: Context, next: () => void) => {
     const payload: number = ctx.request.body;
     ctx.state.data = await service.deleteHero(payload);
-    await next();
+    next();
 };
 
 export const updateHero = async (ctx: Context, next: () => void) => {
     const payload: IHeroUpdateRequest = ctx.request.body;
     ctx.state.data = await service.updateHero(payload);
-    await next();
+    next();
 };
