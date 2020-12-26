@@ -12,7 +12,12 @@ export const getUser = async (email: string) => {
             email
         }
     });
-    //Default await used 
+};
+
+export const getUserById = async (id: number) => {
+    return getRepository(Users).findOne({
+        where: { id }
+    });
 };
 
 export const save = async (user: Users) => {

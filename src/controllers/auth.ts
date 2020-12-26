@@ -9,7 +9,6 @@ import { Users } from "../entities/users";
 export const loginUser = async (ctx: Context, next: () => void) => {
     const request = ctx.request.body as ILoginRequest;
     const response = await service.loginUser(request);
-    console.log(`>>>> ${JSON.stringify(response)}`);
     if(response) {
         const user = response as Users;
         const isCorrect = await isCorrectPassword(request.password, user.password);
