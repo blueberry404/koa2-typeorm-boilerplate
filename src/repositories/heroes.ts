@@ -1,5 +1,6 @@
 import { getRepository } from "typeorm";
 import { Heroes } from "../entities/heroes";
+import { getUserById } from './users';
 
 export const getAll = async () => {
     return getRepository(Heroes).find({
@@ -26,7 +27,7 @@ export const delHero = async (id: number) => {
         await save(hero);
         return "success";
     }
-    return "unable to find user";
+    return "Unable to find user";
 };
 
 export const updateHero = async (id: number, name: string) => {
@@ -36,4 +37,16 @@ export const updateHero = async (id: number, name: string) => {
         await save(hero);
     }
     return hero;
+};
+
+export const getHeroDetails = async (id: number) => {
+    const hero = await getRepository(Heroes).findOne(id);
+    if(hero) {
+        const user = await getUserById(hero.userId);
+        if(user) {
+            const data = {... hero, username: user.name }
+            return data;
+        }
+    }
+    return "Unable to find user";
 };

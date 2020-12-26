@@ -3,6 +3,6 @@ export interface IHeroUpdateRequest {
     name: string;
 }
 
-export interface IHeroDeleteRequest {
+export interface IHeroIDRequest {
     id: number;
 }
