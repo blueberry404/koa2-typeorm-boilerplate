@@ -15,9 +15,7 @@ export const getUser = async (email: string) => {
 };
 
 export const getUserById = async (id: number) => {
-    return getRepository(Users).findOne({
-        where: { id }
-    });
+    return getRepository(Users).findOne(id);
 };
 
 export const save = async (user: Users) => {

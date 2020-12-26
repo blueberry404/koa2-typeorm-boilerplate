@@ -15,5 +15,25 @@ export const save = async (hero: Heroes) => {
 };
 
 export const delHero = async (id: number) => {
-    return getRepository(Heroes).delete(id);
+    const hero = await getRepository(Heroes).findOne({
+        where: {
+            id,
+            isActive: true
+        }
+    });
+    if(hero) {
+        hero.isActive = false;
+        await save(hero);
+        return "success";
+    }
+    return "unable to find user";
+};
+
+export const updateHero = async (id: number, name: string) => {
+    const hero = await getRepository(Heroes).findOne(id);
+    if(hero) {
+        hero.name = name;
+        await save(hero);
+    }
+    return hero;
 };

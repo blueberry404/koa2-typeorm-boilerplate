@@ -19,19 +19,15 @@ export const protectRoute = async (ctx: Context, next: () => void) => {
         //TODO: Can we use Boom here?
         throw new AppError("You are not authorized to access", 401);
     }
-
-    console.log(">> before verifying token");
-
     //verify token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET ?? "") as JwtPayload;
-    const response = getUserById(decoded.id);
+    const response = await getUserById(decoded.id);
     if(response) {
         ctx.state.user = response;
     }
     else {
         throw new AppError("You are not authorized to access", 401);
     }
-    console.log(">>>> At next!");
     await next();
 }
 

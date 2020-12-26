@@ -18,4 +18,7 @@ export class Heroes {
 
     @ManyToOne(() => Users, user => user.heroes)
     user: Users
+
+    @Column({ type: 'int' })
+    userId: number; //createdBy column
 }
